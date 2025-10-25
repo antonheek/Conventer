@@ -1,19 +1,16 @@
 import telebot
 import time
-from bs4 import BeautifulSoup
-import requests
-import pandas as pd
-from selenium import webdriver
+from converter import conv
+
 
 bot = telebot.TeleBot("8401820388:AAFRShkUAmG1ogIWtAO_rP2pxoqvLOWWdOY")
 @bot.message_handler(commands=['start'])
 def send_welcome(message):
     bot.reply_to(message, 'Привет,я бот который может выводить и обновлять курсы в реальном времени!')
 
-driver = webdriver.Chrome()
+@bot.message_handler(commands=['curs'])
+def send_welcome(message):
+    bot.reply_to(message, 'Есть курсы: EUR - Euro,   USD - US Dollar,    RUB - Russian Ruble.')
 
-driver.get("https://www.x-rates.com/")
-
-driver.quit()
 
 bot.polling()
